@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="WpfClient.SeatWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <DataGrid Name="SeatDisplay" 
+             CanUserAddRows="True" 
+             ItemsSource="{Binding}" 
+             AutoGenerateColumns="False" IsReadOnly="true" Height="200" VerticalAlignment="Top" SelectedCellsChanged="ChangeCell_Handler">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Seat Id" Binding="{Binding Path=SeatId}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Seat Code" Binding="{Binding Path=SeatCode}" Width="80"/>
+                <DataGridTextColumn Header="Seat Available" Binding="{Binding Path=SeatAvailable}" Width="150"/>
+                <DataGridTextColumn Header="Flight Id" Binding="{Binding Path=FlightId}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Seat Code:" Height="28" HorizontalAlignment="Left" Margin="66,219,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Seat Available:" Height="28" HorizontalAlignment="Left" Margin="66,262,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Flight Id:" Height="28" HorizontalAlignment="Left" Margin="66,308,0,0" Name="label3" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,219,297,0" Name="txtSeatCode" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=SeatDisplay, Path=SelectedItem.SeatCode, Mode=OneWay}" />
+        <TextBox IsReadOnly="True" Height="23" HorizontalAlignment="Left" Margin="183,308,0,0" Name="txtFlightId" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=SeatDisplay, Path=SelectedItem.FlightId, Mode=OneWay}"/>
+        <Button Content="Create" Height="23" HorizontalAlignment="Left" Margin="72,369,0,0" Name="bCreate" VerticalAlignment="Top" Width="75" Click="bCreate_Click" />
+        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="183,369,0,0" Name="bDelete" VerticalAlignment="Top" Width="75" Click="bDelete_Click" />
+        <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="297,369,0,0" Name="bUpdate" VerticalAlignment="Top" Width="75" Click="bUpdate_Click" />
+        <Button Content="Search" Height="23" HorizontalAlignment="Left" Margin="413,369,0,0" Name="bSearch" VerticalAlignment="Top" Width="75" Click="bSearch_Click" />
+        <Button Content="View All" Height="23" HorizontalAlignment="Left" Margin="77,421,0,0" Name="bViewAll" VerticalAlignment="Top" Width="75" Click="bViewAll_Click" />
+        <Button Content="Clear Form" Height="23" HorizontalAlignment="Left" Margin="183,421,0,0" Name="bClearForm" VerticalAlignment="Top" Width="75" Click="bClearForm_Click" />
+        <Button Content="select.." Height="23" HorizontalAlignment="Left" Margin="325,308,0,0" Name="bSelect" VerticalAlignment="Top" Width="47" Click="bSelect_Click" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="183,267,0,0" Name="CBSeatAvailable" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Y" Name="YItem"/>
+            <ComboBoxItem Content="N" Name="NItem"/>
+        </ComboBox>
+    </Grid>
+</UserControl>

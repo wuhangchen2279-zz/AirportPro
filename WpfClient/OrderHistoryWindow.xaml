@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="WpfClient.OrderHistoryWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Grid>
+        <DataGrid Name="OrderHistoryDisplay" 
+             CanUserAddRows="True" 
+             ItemsSource="{Binding}" 
+             AutoGenerateColumns="False" IsReadOnly="true" Height="600" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Order Id" Binding="{Binding Path=OrderId}" Width="60" Visibility="Hidden"/>
+                <DataGridTextColumn Header="User Id" Binding="{Binding Path=UserId}" Width="90" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Flight Id" Binding="{Binding Path=FlightId}" Width="60"/>
+                <DataGridTextColumn Header="Depart Time" Binding="{Binding Path=DepartTime}" Width="150"/>
+                <DataGridTextColumn Header="Arrive Time" Binding="{Binding Path=ArriveTime}" Width="150"/>
+                <DataGridTextColumn Header="Origin" Binding="{Binding Path=Origin}" Width="90"/>
+                <DataGridTextColumn Header="Destination" Binding="{Binding Path=Destination}" Width="90"/>
+                <DataGridTextColumn Header="SeatCode" Binding="{Binding Path=SeatCode}" Width="90"/>
+                <DataGridTextColumn Header="AirlineName" Binding="{Binding Path=AirlineName}" Width="90"/>
+                <DataGridTextColumn Header="Order Date" Binding="{Binding Path=OrderDate}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

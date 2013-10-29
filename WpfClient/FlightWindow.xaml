@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="WpfClient.FlightWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <DataGrid Name="FlightDisplay" 
+             CanUserAddRows="True" 
+             ItemsSource="{Binding}" 
+             AutoGenerateColumns="False" IsReadOnly="true" Height="200" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Flight Id" Binding="{Binding Path=FlightId, StringFormat=d}" Width="60"/>
+                <DataGridTextColumn Header="Airline Id" Binding="{Binding Path=AirlineId}" Width="60"/>
+                <DataGridTextColumn Header="Depart Time" Binding="{Binding Path=DepartTime}" Width="150"/>
+                <DataGridTextColumn Header="Arrive Time" Binding="{Binding Path=ArriveTime}" Width="150"/>
+                <DataGridTextColumn Header="Origin" Binding="{Binding Path=Origin}" Width="90"/>
+                <DataGridTextColumn Header="Destination" Binding="{Binding Path=Destination}" Width="90"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Flight Id:" Height="28" HorizontalAlignment="Left" Margin="66,219,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Airline Id:" Height="28" HorizontalAlignment="Left" Margin="66,262,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Depart Time:" Height="28" HorizontalAlignment="Left" Margin="66,308,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="Arrive Time:" Height="28" HorizontalAlignment="Left" Margin="66,352,0,0" Name="label4" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,219,318,0" Name="txtFlightId" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=FlightDisplay, Path=SelectedItem.FlightId, Mode=OneWay}" />
+        <TextBox IsReadOnly="True" Height="23" HorizontalAlignment="Left" Margin="162,262,0,0" Name="txtAirlineId" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=FlightDisplay, Path=SelectedItem.AirlineId, Mode=OneWay}"/>
+        <wpfx:DateTimePicker Height="25" HorizontalAlignment="Left" Margin="162,308,0,0" Name="DTPDepartTime" VerticalAlignment="Top" Width="250" Format="Custom" FormatString="M/d/yyyy hh:mm:ss tt" Text="{Binding ElementName=FlightDisplay, Path=SelectedItem.DepartTime, Mode=OneWay}" />
+        <wpfx:DateTimePicker Height="25" HorizontalAlignment="Left" Margin="162,352,0,0" Name="DTPArriveTime" VerticalAlignment="Top" Width="250" Format="Custom" FormatString="M/d/yyyy hh:mm:ss tt" Text="{Binding ElementName=FlightDisplay, Path=SelectedItem.ArriveTime, Mode=OneWay}"/>
+        <!--<TextBox Height="23" HorizontalAlignment="Left" Margin="162,308,0,0" Name="txtBookingPhone" VerticalAlignment="Top" Width="189" Text ="{Binding ElementName=FlightDisplay, Path=SelectedItem.DepartTime, Mode=TwoWay}"/>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="162,352,0,0" Name="txtWebsite" VerticalAlignment="Top" Width="189" Text ="{Binding ElementName=FlightDisplay, Path=SelectedItem.ArriveTime, Mode=TwoWay}"/>-->
+        <Button Content="Create" Height="23" HorizontalAlignment="Left" Margin="72,410,0,0" Name="bCreate" VerticalAlignment="Top" Width="75" Click="bCreate_Click" />
+        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="183,410,0,0" Name="bDelete" VerticalAlignment="Top" Width="75" Click="bDelete_Click" />
+        <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="297,410,0,0" Name="bUpdate" VerticalAlignment="Top" Width="75" Click="bUpdate_Click" />
+        <Button Content="Search" Height="23" HorizontalAlignment="Left" Margin="411,410,0,0" Name="bSearch" VerticalAlignment="Top" Width="75" Click="bSearch_Click" />
+        <Button Content="View All" Height="23" HorizontalAlignment="Left" Margin="72,451,0,0" Name="bViewAll" VerticalAlignment="Top" Width="75" Click="bViewAll_Click" />
+        <Button Content="Clear Form" Height="23" HorizontalAlignment="Left" Margin="183,451,0,0" Name="bClearForm" VerticalAlignment="Top" Width="75" Click="bClearForm_Click" />
+        <Label Content="Origin:" Height="28" HorizontalAlignment="Left" Margin="356,214,0,0" Name="label5" VerticalAlignment="Top" />
+        <Label Content="Destination:" Height="28" HorizontalAlignment="Left" Margin="356,262,0,0" Name="label6" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="442,214,0,0" Name="txtOrigin" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=FlightDisplay, Path=SelectedItem.Origin, Mode=OneWay}"/>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="442,262,0,0" Name="txtDestination" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=FlightDisplay, Path=SelectedItem.Destination, Mode=OneWay}"/>
+        <Button Content="select.." Height="23" HorizontalAlignment="Left" Margin="288,262,0,0" Name="bSelect" VerticalAlignment="Top" Width="62" Click="bSelect_Click" />
+    </Grid>
+</UserControl>

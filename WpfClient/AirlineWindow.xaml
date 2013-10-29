@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WpfClient.AirlineWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <DataGrid Name="AirlineDisplay" 
+             CanUserAddRows="True" 
+             ItemsSource="{Binding}" 
+             AutoGenerateColumns="False" IsReadOnly="true" Height="200" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Airline Id" Binding="{Binding Path=AirlineId}" Width="80"/>
+                <DataGridTextColumn Header="Airline Name" Binding="{Binding Path=AirlineName}" Width="150"/>
+                <DataGridTextColumn Header="Booking Phone" Binding="{Binding Path=BookingPhone}" Width="150"/>
+                <DataGridTextColumn Header="Website" Binding="{Binding Path=Website}" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>      
+        <Label Content="Airline Id:" Height="28" HorizontalAlignment="Left" Margin="66,219,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Airline Name:" Height="28" HorizontalAlignment="Left" Margin="66,262,0,0" Name="label2" VerticalAlignment="Top" />
+        <Label Content="Booking Phone:" Height="28" HorizontalAlignment="Left" Margin="66,308,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="Webiste:" Height="28" HorizontalAlignment="Left" Margin="66,352,0,0" Name="label4" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,219,297,0" Name="txtAirlineId" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=AirlineDisplay, Path=SelectedItem.AirlineId, Mode=OneWay}" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="183,262,0,0" Name="txtAirlineName" VerticalAlignment="Top" Width="189" Text ="{Binding ElementName=AirlineDisplay, Path=SelectedItem.AirlineName, Mode=OneWay}"/>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="183,308,0,0" Name="txtBookingPhone" VerticalAlignment="Top" Width="120" Text ="{Binding ElementName=AirlineDisplay, Path=SelectedItem.BookingPhone, Mode=OneWay}"/>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="183,352,0,0" Name="txtWebsite" VerticalAlignment="Top" Width="189" Text ="{Binding ElementName=AirlineDisplay, Path=SelectedItem.Website, Mode=OneWay}"/>
+        <Button Content="Create" Height="23" HorizontalAlignment="Left" Margin="72,410,0,0" Name="bCreate" VerticalAlignment="Top" Width="75" Click="bCreate_Click" />
+        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="183,410,0,0" Name="bDelete" VerticalAlignment="Top" Width="75" Click="bDelete_Click" />
+        <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="297,410,0,0" Name="bUpdate" VerticalAlignment="Top" Width="75" Click="bUpdate_Click" />
+        <Button Content="Search" Height="23" HorizontalAlignment="Left" Margin="411,410,0,0" Name="bSearch" VerticalAlignment="Top" Width="75" Click="bSearch_Click" />
+        <Button Content="View All" Height="23" HorizontalAlignment="Left" Margin="72,451,0,0" Name="bViewAll" VerticalAlignment="Top" Width="75" Click="bViewAll_Click" />
+        <Button Content="Clear Form" Height="23" HorizontalAlignment="Left" Margin="183,451,0,0" Name="bClearForm" VerticalAlignment="Top" Width="75" Click="bClearForm_Click" />
+    </Grid>
+</UserControl>
